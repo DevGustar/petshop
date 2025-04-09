@@ -69,7 +69,7 @@ Além das funcionalidades básicas, o sistema também oferece possibilidades de 
     │
     └── README.md
 
-# CONTINUAR DAQUIa
+# CONTINUAR DAQUI
 ## 🛠 Instalação
 
 <b>Android:</b>

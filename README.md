@@ -69,31 +69,9 @@ Além das funcionalidades básicas, o sistema também oferece possibilidades de 
     │
     └── README.md
 
-# CONTINUAR DAQUI
 ## 🛠 Instalação
 
-<b>Android:</b>
-
-Faça o Download do JOGO.apk no seu celular.
-Execute o APK e siga as instruções de seu telefone.
-
-```sh
-Coloque código do prompt de comnando se for necessário
-```
-
-<b>Windows:</b>
-
-Não há instalação! Apenas executável!
-Encontre o JOGO.exe na pasta executáveis e execute-o como qualquer outro programa.
-
-```sh
-Coloque código do prompt de comnando se for necessário
-```
-
-<b>HTML:</b>
-
-Não há instalação!
-Encontre o index.html na pasta executáveis e execute-o como uma página WEB (através de algum browser).
+Nenhuma, basta acessar o site [aqui](#).
 
 ## 💻 Configuração para Desenvolvimento
 

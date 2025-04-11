@@ -1,101 +1,141 @@
-# Fundação Escola de Comércio Álvares Penteado
 
-A Fundação Escola de Comércio Álvares Penteado (FECAP) é uma instituição de ensino superior sem fins lucrativos, reconhecida por seu pioneirismo e excelência na área de Gestão de Negócios. Fundada em 2 de junho de 1902 por Antônio de Álvares Leite Penteado e Horácio Berlinck, a FECAP surgiu da necessidade de formar profissionais qualificados para a gestão das organizações, contribuindo para o desenvolvimento econômico do país.
+# 🐾 Sistema de Agendamento de Banhos em Pet Shop
 
-Ao longo de sua trajetória, a FECAP foi responsável por marcos significativos na educação brasileira, como a criação do primeiro curso técnico de Contabilidade e do primeiro curso superior de Economia do país. Além disso, a instituição detém a mais antiga certificação de utilidade pública do Brasil, concedida em 1915.
+<p align="center">
+  <a href="https://www.fecap.br/">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhZPrRa89Kma0ZZogxm0pi-tCn_TLKeHGVxywp-LXAFGR3B1DPouAJYHgKZGV0XTEf4AE&usqp=CAU" alt="FECAP - Fundação de Comércio Álvares Penteado" height="150">
+  </a>
+</p>
 
-A sede histórica da FECAP, conhecida como Palácio do Comércio, foi projetada pelo arquiteto sueco Carlos Ekman e inaugurada em 12 de dezembro de 1908. Localizado no Largo São Francisco, o edifício apresenta uma arquitetura que mescla elementos do art nouveau e do estilo clássico, sendo tombado como patrimônio histórico da cidade de São Paulo desde a década de 1990.
+## 🎓 Fundação Escola de Comércio Álvares Penteado (FECAP)
 
-Atualmente, a FECAP oferece uma variedade de cursos de graduação, pós-graduação e extensão, mantendo seu compromisso com a formação de profissionais altamente qualificados na área de negócios. A instituição também se destaca por sua infraestrutura moderna e por iniciativas de pesquisa e desenvolvimento, consolidando-se como referência no cenário educacional brasileiro.
+A FECAP é referência nacional em excelência educacional, com mais de um século de tradição. Este projeto foi desenvolvido como atividade prática para aplicação de conhecimentos em desenvolvimento web e banco de dados.
 
-# Petshop System 🐶
+## 👨‍💻 Desenvolvedor
 
-## Desenvolvedor
+- [Gustavo Roberto](https://www.linkedin.com/in/gustavo-roberto-0aa488288/)
 
-[Gustavo Roberto](https://www.linkedin.com/in/gustavo-roberto-0aa488288/) 👨‍💻
+## 👨‍🏫 Orientadores
 
-## Orientadores
+- [Dr. Eduardo Savino Gomes](https://www.linkedin.com/in/eduardo-savino-gomes-77833a10/)
+- [Me. Francisco de Souza Escobar](https://www.linkedin.com/in/francisco-escobar/)
+- [Me. Aimar Martins Lopes](https://www.linkedin.com/in/aimarlopes/)
+- [Dr. Jose Carlos Buesso Junior](https://www.linkedin.com/in/jbuesso/)
+- [Dr. Victor Rosetti de Quiroz](https://www.linkedin.com/in/victorbarq/?originalSubdomain=br)
 
-<a href="https://www.linkedin.com/in/eduardo-savino-gomes-77833a10/">Dr. Eduardo Savino Gomes</a>
+## 📌 Descrição do Projeto
 
-<a href="https://www.linkedin.com/in/francisco-escobar/">Me. Francisco de Souza Escobar</a>
+O **Sistema de Agendamento de Banhos em Pet Shop** é uma aplicação web completa com frontend em HTML/CSS e backend em Node.js + Express.js, focada em facilitar o processo de agendamento de banhos para animais de estimação.
 
-<a href="https://www.linkedin.com/in/aimarlopes/">Me. Aimar Martins Lopes</a>
+Entre as funcionalidades principais, o sistema oferece:
+- Cadastro e login de usuários com senhas criptografadas (bcrypt)
+- Autenticação via JWT
+- CRUD completo de agendamentos
+- Upload de imagens dos pets com exibição no frontend
+- Interface simples e funcional para gerenciar os agendamentos
+- Middleware de proteção para rotas privadas
+- Banco de dados estruturado em MySQL
 
-<a href="https://www.linkedin.com/in/jbuesso/">Dr. Jose Carlos Buesso Junior</a>
+Funcionalidades extras:
+- Login com conta Google (OAuth2)
+- Preview da imagem antes do envio
+- Bloqueio de horários duplicados
+- Expiração automática de sessão
 
-<a href="https://www.linkedin.com/in/victorbarq/?originalSubdomain=br">Dr. Victor Rosetti de Quiroz</a>
+## 📁 Estrutura de Pastas
 
-## Descrição
-
-O Sistema de Agendamento de Banhos em Pet Shop é uma aplicação web desenvolvida com o objetivo de facilitar o agendamento de banhos para animais de estimação em pet shops. O sistema permite que usuários realizem o cadastro e login de forma segura, com autenticação baseada em tokens JWT e criptografia de senhas utilizando Bcrypt. Após autenticados, os usuários podem agendar banhos para seus pets, informando dados como nome, raça, data, horário e observações, além de realizar o upload obrigatório de uma imagem do animal, que é armazenada localmente no servidor.
-
-A aplicação foi construída com tecnologias modernas, utilizando HTML5 e CSS3 no front-end, e Node.js com o framework Express no back-end. O banco de dados utilizado é o MySQL, onde são armazenadas todas as informações dos usuários e dos agendamentos. O sistema conta com uma API completa que permite o cadastro, leitura, edição e exclusão dos agendamentos, e protege suas rotas privadas com middleware que verifica a validade dos tokens de autenticação.
-
-Além das funcionalidades básicas, o sistema também oferece possibilidades de recursos avançados, como login com conta Google via OAuth2, visualização prévia da imagem antes do envio, controle para evitar agendamentos com horários duplicados e logout automático por expiração de sessão.
-
-## 🛠 Estrutura de pastas
-
-    petshop/
-    ├── documents/
-    │
-    ├── images/
-    │
-    ├── src/
-    │   ├── backend/
-    │   │   ├── config/
-    │   │   │   └── db.js
-    │   │   ├── controllers/
-    │   │   ├── middleware/
-    │   │   ├── models/
-    │   │   ├── routes/
-    │   │   ├── uploads/
-    │   │   ├── .env
-    │   │   ├── app.js
-    │   │   └── package.json
-    │   │
-    │   ├── frontend/
-    │   │   ├── index.html
-    │   │   ├── login.html
-    │   │   ├── cadastro.html
-    │   │   ├── dashboard.html
-    │   │   ├── agendamentos.html
-    │   │   └── css/
-    │   │       └── style.css
-    │   │
-    │   └── banco_petshop.sql
-    │
-    ├── .gitignore
-    │
-    └── README.md
-
-## 🛠 Instalação
-
-Nenhuma, basta acessar o site [aqui](#).
-
-## 💻 Configuração para Desenvolvimento
-
-Descreva como instalar todas as dependências para desenvolvimento e como rodar um test-suite automatizado de algum tipo. Se necessário, faça isso para múltiplas plataformas.
-
-Para abrir este projeto você necessita das seguintes ferramentas:
-
--<a href="https://godotengine.org/download">GODOT</a>
-
-```sh
-make install
-npm test
-Coloque código do prompt de comnando se for necessário
+```
+petshop/
+├── documents/
+├── images/
+├── src/
+│   ├── backend/
+│   │   ├── config/
+│   │   ├── controllers/
+│   │   ├── middleware/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   ├── uploads/
+│   │   ├── .env.example
+│   │   ├── app.js
+│   │   └── package.json
+│   ├── frontend/
+│   │   ├── index.html
+│   │   ├── login.html
+│   │   ├── cadastro.html
+│   │   ├── dashboard.html
+│   │   ├── agendamentos.html
+│   │   └── css/
+│   │       └── style.css
+│   └── banco_petshop.sql
+├── .gitignore
+└── readme.md
 ```
 
-## 📋 Licença/License
+## ⚙️ Instalação
 
+### 🔗 Versão Web
 
-## 🎓 Referências
+Nenhuma instalação necessária! Basta acessar o site [aqui](#).
 
-Aqui estão as referências usadas no projeto.
+### 🐘 Backend
 
-1. <https://github.com/iuricode/readme-template>
-2. <https://github.com/gabrieldejesus/readme-model>
-3. <https://creativecommons.org/share-your-work/>
-4. <https://freesound.org/>
-5. Músicas por: <a href="https://freesound.org/people/DaveJf/sounds/616544/"> DaveJf </a> e <a href="https://freesound.org/people/DRFX/sounds/338986/"> DRFX </a> ambas com Licença CC 0.
+1. Clone o repositório:
+```bash
+git clone https://github.com/DevGustar/petshop
+cd petshop/src/backend
+```
+
+2. Instale as dependências:
+```bash
+npm install express mysql2 bcrypt jsonwebtoken multer dotenv cors
+```
+
+> Bibliotecas utilizadas:
+> - [Express](https://expressjs.com/) – Servidor web e gerenciamento de rotas
+> - [MySQL2](https://www.npmjs.com/package/mysql2) – Conexão com banco de dados
+> - [Bcrypt](https://www.npmjs.com/package/bcrypt) – Criptografia de senhas
+> - [JWT](https://www.npmjs.com/package/jsonwebtoken) – Autenticação com tokens
+> - [Multer](https://www.npmjs.com/package/multer) – Upload de imagens
+> - [Dotenv](https://www.npmjs.com/package/dotenv) – Variáveis de ambiente
+> - [CORS](https://www.npmjs.com/package/cors) – Permitir requisições entre domínios
+
+3. Configure o `.env` com base no `.env.example`
+
+4. Inicie o servidor:
+```bash
+node app.js
+```
+
+## 🧪 Configuração para Desenvolvimento
+
+- Node.js e npm
+- MySQL
+- Extensões recomendadas: Postman
+
+### Banco de Dados
+
+1. Importe o `banco_petshop.sql` no seu MySQL.
+2. Verifique o `.env`.
+
+## 🔐 Exemplo de .env
+
+```env
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=sua_senha
+DB_NAME=petshop
+JWT_SECRET=sua_chave_secreta
+```
+
+## 📃 Licença
+
+Este projeto está licenciado sob a [X License](LICENSE).
+
+## 📚 Referências
+
+1.
+2.
+3.
+4.
+5.

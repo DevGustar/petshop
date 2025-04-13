@@ -42,30 +42,23 @@ Funcionalidades extras:
 
 ```
 petshop/
-├── documents/
-├── images/
-├── src/
-│   ├── backend/
-│   │   ├── config/
-│   │   ├── controllers/
-│   │   ├── middleware/
-│   │   ├── models/
-│   │   ├── routes/
-│   │   ├── uploads/
-│   │   ├── .env.example
-│   │   ├── app.js
-│   │   └── package.json
-│   ├── frontend/
-│   │   ├── index.html
-│   │   ├── login.html
-│   │   ├── cadastro.html
-│   │   ├── dashboard.html
-│   │   ├── agendamentos.html
-│   │   └── css/
-│   │       └── style.css
-│   └── banco_petshop.sql
-├── .gitignore
-└── readme.md
+├── frontend/
+│   ├── index.html
+│   ├── login.html
+│   ├── cadastro.html
+│   ├── agendamentos.html
+│   └── style.css
+├── backend/
+│   ├── server.js
+│   ├── routes/
+│   ├── controllers/
+│   ├── models/
+│   ├── middleware/
+│   ├── uploads/
+│   └── .env
+├── package.json
+├── banco_petshop.sql
+└── README.md
 ```
 
 ## ⚙️ Instalação

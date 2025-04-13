@@ -21,7 +21,7 @@ A FECAP é referência nacional em excelência educacional, com mais de um sécu
 
 ## 📌 Descrição do Projeto
 
-O **Sistema de Agendamento de Banhos em Pet Shop** é uma aplicação web completa com frontend em HTML/CSS e backend em Node.js + Express.js, focada em facilitar o processo de agendamento de banhos para animais de estimação.
+O **Sistema de Agendamento de Banhos em Pet Shop** é uma aplicação web completa com frontend em HTML/CSS e backend em Node.js e Express, focada em facilitar o processo de agendamento de banhos para animais de estimação.
 
 Entre as funcionalidades principais, o sistema oferece:
 - Cadastro e login de usuários com senhas criptografadas (bcrypt)

@@ -1,0 +1,39 @@
+# Node.js
+node_modules/
+.env
+package-lock.json
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# MySQL dumps
+*.sql
+
+# Imagens de upload
+backend/uploads/
+
+# VS Code
+.vscode/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Cache
+.cache/
+dist/
+
+# HTML Live Server
+frontend/.vscode/
+frontend/.live-server*
+
+# IDEs
+*.sw?
+*.sublime-*
+.idea/
+
+# Outros arquivos temporários
+*.tmp
+*.bak

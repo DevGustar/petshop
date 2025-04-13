@@ -1,23 +1,27 @@
 -- Criação do banco de dados
-CREATE DATABASE IF NOT EXISTS petshop;
+CREATE DATABASE petshop;
 USE petshop;
 
 -- Tabela de usuários
-CREATE TABLE IF NOT EXISTS usuarios (
+CREATE TABLE usuarios (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  email VARCHAR(100) NOT NULL UNIQUE,
-  senha VARCHAR(255) NOT NULL
+  email VARCHAR(191) NOT NULL UNIQUE,
+  senha VARCHAR(255) NOT NULL,
+  criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Tabela de agendamentos
-CREATE TABLE IF NOT EXISTS agendamentos (
+CREATE TABLE agendamentos (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  nome VARCHAR(100),
+  usuario_id INT NOT NULL,
+  nome_pet VARCHAR(100) NOT NULL,
   raca VARCHAR(100),
-  data DATE,
-  horario TIME,
+  data DATE NOT NULL,
+  horario TIME NOT NULL,
   observacoes TEXT,
-  imagem VARCHAR(255),
-  usuario_id INT,
+  imagem VARCHAR(255) NOT NULL,
+  criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
+
+show databases;

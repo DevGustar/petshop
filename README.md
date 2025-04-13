@@ -1,4 +1,3 @@
-
 # 🐾 Sistema de Agendamento de Banhos em Pet Shop
 
 <p align="center">
@@ -23,108 +22,103 @@ A FECAP é referência nacional em excelência educacional, com mais de um sécu
 
 O **Sistema de Agendamento de Banhos em Pet Shop** é uma aplicação web completa com frontend em HTML/CSS e backend em Node.js e Express, focada em facilitar o processo de agendamento de banhos para animais de estimação.
 
-Entre as funcionalidades principais, o sistema oferece:
+Funcionalidades principais:
 - Cadastro e login de usuários com senhas criptografadas (bcrypt)
 - Autenticação via JWT
-- CRUD completo de agendamentos
-- Upload de imagens dos pets com exibição no frontend
-- Interface simples e funcional para gerenciar os agendamentos
+- CRUD completo de agendamentos (criar, listar, editar, excluir)
+- Upload de imagens dos pets com preview no frontend
+- Interface responsiva com animações suaves
 - Middleware de proteção para rotas privadas
-- Banco de dados estruturado em MySQL
+- Banco de dados MySQL estruturado
 
 Funcionalidades extras:
-- Login com conta Google (OAuth2)
-- Preview da imagem antes do envio
-- Bloqueio de horários duplicados
-- Expiração automática de sessão
+- Preview de imagem antes do envio
+- Edição de agendamento com imagem atualizada
+- Sessão protegida por JWT (com redirect automático)
 
 ## 📁 Estrutura de Pastas
 
 ```
 petshop/
-├── frontend/
-│   ├── index.html
-│   ├── login.html
-│   ├── cadastro.html
-│   ├── agendamentos.html
-│   └── style.css
 ├── backend/
-│   ├── server.js
-│   ├── routes/
 │   ├── controllers/
+│   │   └── agendamentoController.js
+│   ├── middlewares/
+│   │   ├── auth.js
+│   │   └── upload.js
 │   ├── models/
-│   ├── middleware/
+│   ├── routes/
+│   │   ├── agendamentos.js
+│   │   └── auth.js
 │   ├── uploads/
-│   └── .env
-├── package.json
+│   ├── .env
+│   ├── app.js
+│   ├── database.js
+│   ├── package.json
+│   └── server.js
+├── frontend/
+│   ├── css/
+│   │   ├── style.css
+│   │   └── style-index.css
+│   ├── js/
+│   │   ├── agendamentos.js
+│   │   └── auth.js
+│   ├── agendamentos.html
+│   ├── cadastro.html
+│   ├── index.html
+│   └── login.html
 ├── banco_petshop.sql
 └── README.md
 ```
 
-## ⚙️ Instalação
+## ⚙️ Instalação & Execução
 
 ### 🔗 Versão Web
 
-Nenhuma instalação necessária! Basta acessar o site [aqui](#).
+Basta abrir `frontend/index.html` em qualquer navegador.
 
-### 🐘 Backend
+### 🐘 Backend (Node.js)
 
-1. Clone o repositório:
 ```bash
 git clone https://github.com/DevGustar/petshop
-cd petshop/src/backend
+cd petshop/backend
+npm install
+node server.js
 ```
-
-2. Instale as dependências:
-```bash
-npm install express mysql2 bcrypt jsonwebtoken multer dotenv cors
-```
-
-> Bibliotecas utilizadas:
-> - [Express](https://expressjs.com/) – Servidor web e gerenciamento de rotas
-> - [MySQL2](https://www.npmjs.com/package/mysql2) – Conexão com banco de dados
-> - [Bcrypt](https://www.npmjs.com/package/bcrypt) – Criptografia de senhas
-> - [JWT](https://www.npmjs.com/package/jsonwebtoken) – Autenticação com tokens
-> - [Multer](https://www.npmjs.com/package/multer) – Upload de imagens
-> - [Dotenv](https://www.npmjs.com/package/dotenv) – Variáveis de ambiente
-> - [CORS](https://www.npmjs.com/package/cors) – Permitir requisições entre domínios
-
-3. Configure o `.env` com base no `.env.example`
-
-4. Inicie o servidor:
-```bash
-node app.js
-```
-
-## 🧪 Configuração para Desenvolvimento
-
-- Node.js e npm
-- MySQL
-- Extensões recomendadas: Postman
 
 ### Banco de Dados
 
-1. Importe o `banco_petshop.sql` no seu MySQL.
-2. Verifique o `.env`.
-
-## 🔐 Exemplo de .env
+1. Execute o script `banco_petshop.sql` no seu MySQL Workbench
+2. Crie um arquivo `.env` com as informações:
 
 ```env
 DB_HOST=localhost
 DB_USER=root
-DB_PASSWORD=sua_senha
+DB_PASSWORD=
 DB_NAME=petshop
 JWT_SECRET=sua_chave_secreta
 ```
 
+> Certifique-se de que seu banco MySQL esteja rodando
+
+## 🧪 Ferramentas Utilizadas
+
+- [Node.js](https://nodejs.org/) + Express
+- [MySQL](https://www.mysql.com/)
+- [JWT](https://jwt.io/) para autenticação
+- [Multer](https://www.npmjs.com/package/multer) para upload de imagens
+- [Bcrypt](https://www.npmjs.com/package/bcrypt) para criptografar senhas
+- [Postman](https://www.postman.com/) para testes de API
+- [HTML5/CSS3/JS](https://developer.mozilla.org/)
+
 ## 📃 Licença
 
-Este projeto está licenciado sob a [X License](LICENSE).
+Este projeto está licenciado sob a [MIT License](https://opensource.org/licenses/MIT).
 
 ## 📚 Referências
 
-1.
-2.
-3.
-4.
-5.
+1. [Autenticação com Node.js e MongoDB com JWT - Login e Registro com Node.js](https://youtu.be/qEBoZ8lJR3k?si=vz2f9aIXsP35-Bwv)
+2. [Saiba mais sobre Express](https://expressjs.com)
+3. [JWT (JSON Web Token - Autenticação e Segurança)](https://youtu.be/Gyq-yeot8qM?si=NMZOaLZOsNVxCSfg)
+4. [Fundação Escola de Comércio Álvares Penteado](https://www.fecap.br)
+5. [Para mais informações sobre qualquer linguagem](https://www.w3schools.com/)

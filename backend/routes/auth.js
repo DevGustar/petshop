@@ -1,0 +1,88 @@
+// /routes/auth.js
+
+const express = require('express');
+const router = express.Router();
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const mysql = require('mysql2/promise');
+
+require('dotenv').config();
+
+const dbConfig = {
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'petshop'
+};
+
+const JWT_SECRET = process.env.JWT_SECRET || 'sua_chave_secreta_super_segura';
+
+// Registro de usuário
+router.post('/register', async (req, res) => {
+    const { email, senha } = req.body;
+
+    if (!email || !senha) {
+        return res.status(400).json({ message: 'Email e senha são obrigatórios.' });
+    }
+
+    try {
+        const connection = await mysql.createConnection(dbConfig);
+
+        // Verifica se o e-mail já existe
+        const [rows] = await connection.execute('SELECT * FROM usuarios WHERE email = ?', [email]);
+        if (rows.length > 0) {
+            await connection.end();
+            return res.status(400).json({ message: 'E-mail já está cadastrado.' });
+        }
+
+        const senhaCriptografada = await bcrypt.hash(senha, 10);
+
+        await connection.execute('INSERT INTO usuarios (email, senha) VALUES (?, ?)', [
+            email,
+            senhaCriptografada
+        ]);
+
+        await connection.end();
+        res.status(201).json({ message: 'Usuário registrado com sucesso.' });
+    } catch (error) {
+        res.status(500).json({ message: 'Erro no servidor.', error });
+    }
+});
+
+// Login de usuário
+router.post('/login', async (req, res) => {
+    const { email, senha } = req.body;
+
+    if (!email || !senha) {
+        return res.status(400).json({ message: 'Email e senha são obrigatórios.' });
+    }
+
+    try {
+        const connection = await mysql.createConnection(dbConfig);
+        const [rows] = await connection.execute('SELECT * FROM usuarios WHERE email = ?', [email]);
+
+        await connection.end();
+
+        if (rows.length === 0) {
+            return res.status(401).json({ message: 'Credenciais inválidas.' });
+        }
+
+        const usuario = rows[0];
+
+        const senhaCorreta = await bcrypt.compare(senha, usuario.senha);
+        if (!senhaCorreta) {
+            return res.status(401).json({ message: 'Credenciais inválidas.' });
+        }
+
+        // Gera token JWT com ID do usuário
+        const token = jwt.sign({ id: usuario.id, email: usuario.email }, JWT_SECRET, {
+            expiresIn: '1h'
+        });
+
+        res.json({ token });
+    } catch (error) {
+        res.status(500).json({ message: 'Erro no servidor.', error });
+    }
+});
+
+module.exports = router;

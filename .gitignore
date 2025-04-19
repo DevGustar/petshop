@@ -37,3 +37,4 @@ frontend/.live-server*
 # Outros arquivos temporários
 *.tmp
 *.bak
+backend/.env

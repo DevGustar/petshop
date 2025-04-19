@@ -1,5 +1,3 @@
-// /routes/auth.js
-
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
@@ -17,7 +15,6 @@ const dbConfig = {
 
 const JWT_SECRET = process.env.JWT_SECRET || 'sua_chave_secreta_super_segura';
 
-// Registro de usuário
 router.post('/register', async (req, res) => {
     const { email, senha } = req.body;
 
@@ -28,7 +25,6 @@ router.post('/register', async (req, res) => {
     try {
         const connection = await mysql.createConnection(dbConfig);
 
-        // Verifica se o e-mail já existe
         const [rows] = await connection.execute('SELECT * FROM usuarios WHERE email = ?', [email]);
         if (rows.length > 0) {
             await connection.end();
@@ -49,7 +45,6 @@ router.post('/register', async (req, res) => {
     }
 });
 
-// Login de usuário
 router.post('/login', async (req, res) => {
     const { email, senha } = req.body;
 
@@ -74,7 +69,6 @@ router.post('/login', async (req, res) => {
             return res.status(401).json({ message: 'Credenciais inválidas.' });
         }
 
-        // Gera token JWT com ID do usuário
         const token = jwt.sign({ id: usuario.id, email: usuario.email }, JWT_SECRET, {
             expiresIn: '1h'
         });

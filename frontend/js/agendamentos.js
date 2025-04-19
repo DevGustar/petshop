@@ -79,25 +79,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
             const agendamentos = await response.json();
-
+    
             if (Array.isArray(agendamentos)) {
                 container.innerHTML = '';
-
+    
                 if (agendamentos.length === 0) {
                     container.innerHTML = '<p>Nenhum agendamento encontrado.</p>';
                 }
-
+    
                 agendamentos.forEach((item) => {
+                    // Formatar data
+                    const dataObj = new Date(item.data);
+                    const dataFormatada = `${String(dataObj.getDate()).padStart(2, '0')}/${String(dataObj.getMonth() + 1).padStart(2, '0')}/${dataObj.getFullYear()}`;
+                    
+                    // Usar o horário diretamente do campo item.horario
+                    const [horas, minutos] = item.horario.split(':');
+                    const horarioFormatado = minutos === '00' ? `${horas}h` : `${horas}h${minutos}`;
+                
                     const card = document.createElement('div');
                     card.classList.add('agendamento');
                     card.innerHTML = `
-              <h3>${item.nome_pet} - ${item.raca}</h3>
-              <p>📅 ${item.data} às ${item.horario}</p>
-              <p>${item.observacoes || 'Sem observações'}</p>
-              <img src="http://localhost:3000/uploads/${item.imagem}" alt="${item.nome_pet}" width="200" />
-              <button onclick="editarAgendamento(${item.id})">Editar</button>
-              <button onclick="excluirAgendamento(${item.id})">Excluir</button>
-            `;
+                        <h3>${item.nome_pet} - ${item.raca}</h3>
+                        <p>📅 ${dataFormatada} às ${horarioFormatado}</p>
+                        <p>${item.observacoes || 'Sem observações'}</p>
+                        <img src="http://localhost:3000/uploads/${item.imagem}" alt="${item.nome_pet}" width="200" />
+                        <button class="editButton" onclick="editarAgendamento(${item.id})">Editar</button>
+                        <button onclick="excluirAgendamento(${item.id})">Excluir</button>
+                    `;
                     container.appendChild(card);
                 });
             } else {

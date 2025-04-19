@@ -3,7 +3,6 @@ const path = require('path');
 const fs = require('fs');
 
 module.exports = {
-    // Criar um novo agendamento
     async criarAgendamento(req, res) {
         const { nome_pet, raca, data, horario, observacoes } = req.body;
         const usuarioId = req.user.id;
@@ -27,7 +26,6 @@ module.exports = {
         }
     },
 
-    // Listar todos os agendamentos do usuário logado
     async listarAgendamentos(req, res) {
         const usuarioId = req.user.id;
 
@@ -42,7 +40,6 @@ module.exports = {
         }
     },
 
-    // Obter agendamento específico
     async obterAgendamento(req, res) {
         const { id } = req.params;
         const usuarioId = req.user.id;
@@ -63,7 +60,6 @@ module.exports = {
         }
     },
 
-    // Atualizar agendamento
     async atualizarAgendamento(req, res) {
         const { id } = req.params;
         const { nome_pet, raca, data, horario, observacoes } = req.body;
@@ -81,7 +77,6 @@ module.exports = {
 
             let imagem = rows[0].imagem;
             if (req.file) {
-                // Deleta imagem antiga
                 const imagemAntiga = path.join(__dirname, '..', 'uploads', imagem);
                 if (fs.existsSync(imagemAntiga)) fs.unlinkSync(imagemAntiga);
 
@@ -100,7 +95,6 @@ module.exports = {
         }
     },
 
-    // Deletar agendamento
     async deletarAgendamento(req, res) {
         const { id } = req.params;
         const usuarioId = req.user.id;
@@ -115,7 +109,6 @@ module.exports = {
                 return res.status(404).json({ message: 'Agendamento não encontrado.' });
             }
 
-            // Exclui a imagem do servidor
             const caminhoImagem = path.join(__dirname, '..', 'uploads', rows[0].imagem);
             if (fs.existsSync(caminhoImagem)) fs.unlinkSync(caminhoImagem);
 

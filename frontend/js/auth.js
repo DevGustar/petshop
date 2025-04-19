@@ -65,3 +65,16 @@ if (cadastroForm) {
         }
     });
 }
+
+document.getElementById('btnGoogle')?.addEventListener('click', () => {
+    window.location.href = 'http://localhost:3000/api/auth/google';
+});
+
+// Quando voltar do Google com token na URL
+const urlParams = new URLSearchParams(window.location.search);
+const token = urlParams.get('token');
+
+if (token) {
+    localStorage.setItem('token', token);
+    window.location.href = 'agendamentos.html';
+}

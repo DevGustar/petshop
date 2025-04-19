@@ -24,4 +24,4 @@ CREATE TABLE agendamentos (
   FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
-show databases;
+SHOW DATABASES;

@@ -1,8 +1,6 @@
-// /middlewares/auth.js
 
 const jwt = require('jsonwebtoken');
 
-// Substitua por uma variável de ambiente em produção
 const secret = process.env.JWT_SECRET || 'sua_chave_secreta_super_segura';
 
 function authMiddleware(req, res, next) {
@@ -12,7 +10,7 @@ function authMiddleware(req, res, next) {
         return res.status(401).json({ message: 'Token não fornecido' });
     }
 
-    const token = authHeader.split(' ')[1]; // Espera formato: Bearer <token>
+    const token = authHeader.split(' ')[1];
 
     if (!token) {
         return res.status(401).json({ message: 'Token mal formatado' });
@@ -20,8 +18,8 @@ function authMiddleware(req, res, next) {
 
     try {
         const decoded = jwt.verify(token, secret);
-        req.user = decoded; // Dados do token disponíveis no request
-        next(); // Autorizado, segue para a rota
+        req.user = decoded;
+        next();
     } catch (err) {
         return res.status(403).json({ message: 'Token inválido ou expirado' });
     }

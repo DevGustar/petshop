@@ -9,10 +9,11 @@
 </head>
 
 <body>
+    <button class="logout" onclick="logout()">Sair</button>
+
+    <a href="index.html"><img class="logo" src="../images/logo.png" alt=""></a>
     <div class="container">
         <h1>🐾 Gusta Petshop 🐾</h1>
-
-        <button onclick="logout()">Sair</button>
 
         <form id="agendamentoForm" enctype="multipart/form-data">
             <h2>Novo Agendamento</h2>
@@ -26,6 +27,8 @@
                 style="display: none; margin-top: 10px; border-radius: 8px; max-width: 100%; max-height: 200px;" />
             <button type="submit">Agendar</button>
         </form>
+
+        <button type="button" id="cancelarEdicao" style="display: none;">Cancelar Alterações</button>
 
         <h2>Meus Agendamentos</h2>
         <div id="agendamentosContainer"></div>

@@ -34,7 +34,37 @@ document.addEventListener('DOMContentLoaded', () => {
     // Enviar ou atualizar agendamento
     agendamentoForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+
         const formData = new FormData(agendamentoForm);
+
+        // Obter a data e o horário do formulário
+        const data = formData.get('data'); // Formato esperado: yyyy-mm-dd
+        const horario = formData.get('horario'); // Formato esperado: hh:mm
+
+        // Validar se a data é um dia útil
+        const [ano, mes, dia] = data.split('-').map(Number); // Dividir a data manualmente
+        const dataObj = new Date(ano, mes - 1, dia); // Criar a data sem interferência de fuso horário
+        const diaSemana = dataObj.getDay(); // 0 = Domingo, 6 = Sábado
+        if (diaSemana === 0 || diaSemana === 6) {
+            alert('Agendamentos só podem ser feitos de segunda a sexta.');
+            return;
+        }
+
+        // Validar se o horário está entre 8h e 18h
+        const [horas, minutos] = horario.split(':').map(Number);
+        if (horas < 8 || horas > 18 || (horas === 18 && minutos > 0)) {
+            alert('O horário deve estar entre 8h e 18h.');
+            return;
+        }
+
+        // Validar se a data e o horário não estão no passado
+        const agora = new Date();
+        const dataHoraAgendamento = new Date(ano, mes - 1, dia, horas, minutos, 0, 0); // Criar a data e hora sem fuso horário
+
+        if (dataHoraAgendamento < agora) {
+            alert('Não é possível agendar para uma data ou horário que já passou.');
+            return;
+        }
 
         const url = modoEdicao
             ? `http://localhost:3000/api/agendamentos/${idEmEdicao}`
@@ -79,23 +109,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
             const agendamentos = await response.json();
-    
+
             if (Array.isArray(agendamentos)) {
                 container.innerHTML = '';
-    
+
                 if (agendamentos.length === 0) {
                     container.innerHTML = '<p>Nenhum agendamento encontrado.</p>';
                 }
-    
+
                 agendamentos.forEach((item) => {
                     // Formatar data
                     const dataObj = new Date(item.data);
                     const dataFormatada = `${String(dataObj.getDate()).padStart(2, '0')}/${String(dataObj.getMonth() + 1).padStart(2, '0')}/${dataObj.getFullYear()}`;
-                    
+
                     // Usar o horário diretamente do campo item.horario
                     const [horas, minutos] = item.horario.split(':');
                     const horarioFormatado = minutos === '00' ? `${horas}h` : `${horas}h${minutos}`;
-                
+
                     const card = document.createElement('div');
                     card.classList.add('agendamento');
                     card.innerHTML = `
@@ -103,9 +133,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>📅 ${dataFormatada} às ${horarioFormatado}</p>
                         <p>${item.observacoes || 'Sem observações'}</p>
                         <img src="http://localhost:3000/uploads/${item.imagem}" alt="${item.nome_pet}" width="200" />
-                        <button class="editButton" onclick="editarAgendamento(${item.id})">Editar</button>
-                        <button onclick="excluirAgendamento(${item.id})">Excluir</button>
-                    `;
+                        <div class="button-container">
+                            <button class="editButton" onclick="editarAgendamento(${item.id})">Editar</button>
+                            <button onclick="excluirAgendamento(${item.id})">Excluir</button>
+                        </div>`;
                     container.appendChild(card);
                 });
             } else {
@@ -139,7 +170,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 modoEdicao = true;
                 idEmEdicao = id;
+
+                // Atualizar o texto do botão principal
                 agendamentoForm.querySelector('button').textContent = 'Salvar Alterações';
+
+                // Exibir o botão "Cancelar Alteração"
+                document.getElementById('cancelarEdicao').style.display = 'inline-block';
+
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             } else {
                 alert(data.message || 'Erro ao carregar agendamento.');
@@ -149,6 +186,24 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Erro no servidor.');
         }
     };
+
+    const cancelarEdicaoBtn = document.getElementById('cancelarEdicao');
+
+    cancelarEdicaoBtn.addEventListener('click', () => {
+        // Resetar o formulário
+        agendamentoForm.reset();
+        preview.style.display = 'none';
+
+        // Reverter o estado de edição
+        modoEdicao = false;
+        idEmEdicao = null;
+
+        // Atualizar o texto do botão principal
+        agendamentoForm.querySelector('button').textContent = 'Agendar';
+
+        // Ocultar o botão "Cancelar Alteração"
+        cancelarEdicaoBtn.style.display = 'none';
+    });
 
     // Função global para excluir
     window.excluirAgendamento = async (id) => {

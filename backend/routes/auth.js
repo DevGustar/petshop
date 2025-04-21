@@ -13,7 +13,7 @@ const dbConfig = {
     database: 'petshop'
 };
 
-const JWT_SECRET = process.env.JWT_SECRET || 'sua_chave_secreta_super_segura';
+const JWT_SECRET = process.env.JWT_SECRET || '9f23b5c7d9e44588a612f1a8ddc5f3fddfd3eabb7e6cfad5ce58768df3b7f45b';
 
 router.post('/register', async (req, res) => {
     const { email, senha } = req.body;

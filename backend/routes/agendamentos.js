@@ -15,4 +15,21 @@ router.put('/:id', auth, upload.single('imagem'), agendamentoController.atualiza
 
 router.delete('/:id', auth, agendamentoController.deletarAgendamento);
 
+router.get('/agendamentos/ocupados', async (req, res) => {
+    const { data } = req.query;
+
+    try {
+        const agendamentos = await Agendamento.findAll({
+            where: { data },
+            attributes: ['horario']
+        });
+
+        const horariosOcupados = agendamentos.map(agendamento => agendamento.horario);
+        res.json(horariosOcupados);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Erro ao buscar horários ocupados.' });
+    }
+});
+
 module.exports = router;

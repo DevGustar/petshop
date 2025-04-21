@@ -14,10 +14,23 @@ module.exports = {
         const imagem = req.file.filename;
 
         try {
+            // ✅ Verificar se já existe agendamento na mesma data e horário
+            const [agendamentosExistentes] = await db.execute(
+                'SELECT * FROM agendamentos WHERE data = ? AND horario = ?',
+                [data, horario]
+            );
+
+            if (agendamentosExistentes.length > 0) {
+                return res.status(400).json({
+                    message: 'Já existe um agendamento para esse dia e horário.'
+                });
+            }
+
             const query = `
-        INSERT INTO agendamentos (usuario_id, nome_pet, raca, data, horario, observacoes, imagem)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
-      `;
+            INSERT INTO agendamentos (usuario_id, nome_pet, raca, data, horario, observacoes, imagem)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        `;
+
             await db.execute(query, [usuarioId, nome_pet, raca, data, horario, observacoes, imagem]);
 
             res.status(201).json({ message: 'Agendamento criado com sucesso.' });

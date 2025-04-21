@@ -2,22 +2,40 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bem-vindo ao Petshop System</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="css/style-index.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petshop do Gusta</title>
+    <link rel="stylesheet" href="css/style-index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div class="container index-container">
-        <h1>🐾 Petshop do Gusta</h1>
-        <p>Agende banhos para seus pets com facilidade e segurança.</p>
-        <div class="index-buttons">
-            <a href="login.html">Entrar</a>
-            <a href="cadastro.html">Cadastrar</a>
-        </div>
-    </div>
+    <main class="container fade-in">
+        <section class="conteudo fade-in-delay">
+            <h1>Tudo para o seu pet em um só lugar</h1>
+            <p>Oferecemos produtos e serviços de qualidade para o <br>bem-estar do seu pet.</p>
+            <button class="botao" onclick="window.location.href='login.html'">Agende um horário</button>
+        </section>
+
+        <section class="imagem fade-in-delay-2">
+            <img src="../images/DogCat.png" alt="Imagem de um cachorro e um gato">
+        </section>
+    </main>
+
+    <footer class="fade-in-delay-3">
+        <p>&copy; 2025 Petshop do Gusta. Todos os direitos reservados.</p>
+        <p>Desenvolvido por <a href="https://www.linkedin.com/in/gustavo-roberto-0aa488288/" target="_blank">Gustavo
+                R.</a></p>
+    </footer>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.fade-in, .fade-in-delay, .fade-in-delay-2, .fade-in-delay-3').forEach(el => {
+                el.classList.add('animate');
+            });
+        });
+    </script>
+
 </body>
 
 </html>

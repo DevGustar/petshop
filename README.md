@@ -49,7 +49,7 @@ petshop/
 │   ├── middlewares/
 │   │   ├── auth.js
 │   │   └── upload.js
-│   ├── models/
+│   ├── node_modules/
 │   ├── routes/
 │   │   ├── agendamentos.js
 │   │   ├── auth.js
@@ -59,14 +59,15 @@ petshop/
 │   ├── .env.example
 │   ├── app.js
 │   ├── database.js
-│   ├── server.js
+│   ├── env.jpg
+│   ├── package-lock.json
 │   ├── package.json
-│   └── README.md
+│   └── server.js
 │
 ├── frontend/
 │   ├── css/
-│   │   ├── style.css
 │   │   └── style-index.css
+│   │   ├── style.css
 │   ├── js/
 │   │   ├── agendamentos.js
 │   │   └── auth.js
@@ -76,10 +77,9 @@ petshop/
 │   └── login.html
 │
 ├── images/
-│   └── (imagens e logotipo do sistema)
 │
-├── banco_petshop.sql
 ├── .gitignore
+├── banco_petshop.sql
 └── README.md
 ```
 

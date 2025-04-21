@@ -1,31 +1,63 @@
+<!-- Declara que este é um documento HTML5 -->
 <!DOCTYPE html>
+
+<!-- Define o idioma da página como português do Brasil -->
 <html lang="pt-BR">
 
 <head>
+    <!-- Codificação de caracteres para acentuação funcionar corretamente -->
     <meta charset="UTF-8" />
+
+    <!-- Faz a página se adaptar bem a dispositivos móveis -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Título que aparece na aba do navegador -->
     <title>Login - Petshop</title>
+
+    <!-- Importa o arquivo de estilos CSS principal -->
     <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-    <a href="index.html"><img class="logo" src="../images/logo.png" alt=""></a>
+    <!-- Link para voltar à página inicial -->
+    <a href="index.html">
+        <!-- Logo com animação fade-in -->
+        <img class="logo fade-in" src="../images/logo.png" alt="">
+    </a>
+
+    <!-- Container principal da área de login -->
     <div class="container">
+        <!-- Título da página -->
         <h1>Login</h1>
+
+        <!-- Início do formulário de login -->
         <form id="loginForm">
+            <!-- Campo de entrada de e-mail -->
             <input type="email" id="email" placeholder="E-mail" required />
+
+            <!-- Campo de entrada de senha -->
             <input type="password" id="senha" placeholder="Senha" required />
+
+            <!-- Botão que envia o formulário para login -->
             <button type="submit">Entrar</button>
+
+            <!-- Linha de separação -->
             <hr>
+
+            <!-- Botão para login com a conta do Google -->
             <button type="button" id="btnGoogle" class="google-btn">
+                <!-- Ícone do Google ao lado esquerdo do texto -->
                 <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google icon" width="20"
                     style="vertical-align: middle; margin-right: 8px;">
                 Entrar com Google
             </button>
         </form>
+
+        <!-- Link para página de cadastro -->
         <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p>
     </div>
 
+    <!-- Script JavaScript que gerencia o login -->
     <script src="js/auth.js"></script>
 </body>
 

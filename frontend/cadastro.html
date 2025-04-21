@@ -1,25 +1,51 @@
+<!-- Declaração de que o documento está em HTML5 -->
 <!DOCTYPE html>
+
+<!-- Define o idioma principal como português do Brasil -->
 <html lang="pt-BR">
 
 <head>
+    <!-- Define a codificação de caracteres como UTF-8 (permite acentuação e símbolos) -->
     <meta charset="UTF-8" />
+
+    <!-- Define que a página deve ser responsiva, ajustando para dispositivos móveis -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Título exibido na aba do navegador -->
     <title>Cadastro - Petshop</title>
+
+    <!-- Importa o arquivo de estilos (CSS) utilizado por esta página -->
     <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-    <a href="index.html"><img class="logo" src="../images/logo.png" alt=""></a>
+    <!-- Logo clicável que redireciona para a página inicial (index.html) -->
+    <a href="index.html">
+        <img class="logo" src="../images/logo.png" alt=""> <!-- Imagem da logo do petshop -->
+    </a>
+
+    <!-- Container central que engloba o conteúdo da página -->
     <div class="container">
+        <!-- Título principal da página -->
         <h1>Cadastro</h1>
+
+        <!-- Formulário de cadastro de usuário -->
         <form id="cadastroForm">
+            <!-- Campo de entrada de e-mail com validação HTML5 -->
             <input type="email" id="email" placeholder="E-mail" required />
+
+            <!-- Campo de senha com validação obrigatória -->
             <input type="password" id="senha" placeholder="Senha" required />
+
+            <!-- Botão para enviar o formulário e cadastrar -->
             <button type="submit">Cadastrar</button>
         </form>
+
+        <!-- Link alternativo para usuários que já têm conta -->
         <p>Já tem conta? <a href="login.html">Fazer login</a></p>
     </div>
 
+    <!-- Importa o script JavaScript que trata o envio do formulário (validação, requisição, etc.) -->
     <script src="js/auth.js"></script>
 </body>
 

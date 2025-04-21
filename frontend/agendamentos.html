@@ -1,39 +1,79 @@
+<!-- Define que este é um documento HTML5 -->
 <!DOCTYPE html>
+
+<!-- Define o idioma principal como português do Brasil -->
 <html lang="pt-BR">
 
 <head>
+    <!-- Define codificação UTF-8 (compatível com acentuação e caracteres especiais) -->
     <meta charset="UTF-8" />
+
+    <!-- Torna a página responsiva em diferentes tamanhos de tela -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Título exibido na aba do navegador -->
     <title>Agendamentos - Petshop</title>
+
+    <!-- Importa a folha de estilos principal -->
     <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
+    <!-- Botão de logout, chama a função 'logout()' ao ser clicado -->
     <button class="logout" onclick="logout()">Sair</button>
 
-    <a href="index.html"><img class="logo" src="../images/logo.png" alt=""></a>
+    <!-- Logo clicável que retorna à página inicial -->
+    <a href="index.html">
+        <img class="logo" src="../images/logo.png" alt="">
+    </a>
+
+    <!-- Container central que agrupa todo o conteúdo principal -->
     <div class="container">
+        <!-- Título principal da página de agendamentos -->
         <h1>🐾 Gusta Petshop 🐾</h1>
 
+        <!-- Formulário para cadastrar novo agendamento -->
         <form id="agendamentoForm" enctype="multipart/form-data">
+            <!-- Título da seção de novo agendamento -->
             <h2>Novo Agendamento</h2>
+
+            <!-- Campo para digitar o nome do pet -->
             <input type="text" name="nome_pet" placeholder="Nome do Pet" required />
+
+            <!-- Campo para digitar a raça do pet -->
             <input type="text" name="raca" placeholder="Raça" required />
+
+            <!-- Campo para escolher a data do agendamento -->
             <input type="date" name="data" required />
+
+            <!-- Campo para escolher o horário do agendamento -->
             <input type="time" name="horario" required />
+
+            <!-- Campo opcional para observações adicionais -->
             <input type="text" name="observacoes" placeholder="Observações" id="">
+
+            <!-- Campo de upload de imagem do pet (somente imagens) -->
             <input type="file" name="imagem" accept="image/*" required />
+
+            <!-- Preview da imagem antes do envio, escondido por padrão -->
             <img id="previewImagem" src="#" alt="Preview"
                 style="display: none; margin-top: 10px; border-radius: 8px; max-width: 100%; max-height: 200px;" />
+
+            <!-- Botão para enviar o formulário e criar o agendamento -->
             <button type="submit">Agendar</button>
         </form>
 
+        <!-- Botão que aparece somente durante edição de um agendamento -->
         <button type="button" id="cancelarEdicao" style="display: none;">Cancelar Alterações</button>
 
+        <!-- Título da seção que mostra todos os agendamentos do usuário -->
         <h2>Meus Agendamentos</h2>
+
+        <!-- Div onde os cards de agendamentos serão exibidos dinamicamente -->
         <div id="agendamentosContainer"></div>
     </div>
 
+    <!-- Importa o script que lida com o CRUD de agendamentos -->
     <script src="js/agendamentos.js"></script>
 </body>
 

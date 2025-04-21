@@ -1,35 +1,59 @@
+<!-- Declara que este é um documento HTML5 -->
 <!DOCTYPE html>
+
+<!-- Define o idioma principal da página como português do Brasil -->
 <html lang="pt-BR">
 
 <head>
+    <!-- Define o conjunto de caracteres como UTF-8 para suportar acentuação -->
     <meta charset="UTF-8">
+
+    <!-- Faz o layout ser responsivo em dispositivos móveis -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Define o título da página, exibido na aba do navegador -->
     <title>Petshop do Gusta</title>
+
+    <!-- Importa o arquivo de estilos da landing page -->
     <link rel="stylesheet" href="css/style-index.css">
+
+    <!-- Importa a fonte 'Poppins' do Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
+
+    <!-- Conteúdo principal da página (centralizado com animações) -->
     <main class="container fade-in">
+        
+        <!-- Seção de texto principal com título, descrição e botão -->
         <section class="conteudo fade-in-delay">
-            <h1>Tudo para o seu pet em um só lugar</h1>
-            <p>Oferecemos produtos e serviços de qualidade para o <br>bem-estar do seu pet.</p>
+            <h1>Tudo para o seu pet em um só lugar</h1> <!-- Título principal com destaque -->
+            <p>Oferecemos produtos e serviços de qualidade para o <br>bem-estar do seu pet.</p> <!-- Subtítulo com quebra de linha -->
+
+            <!-- Botão de chamada para ação (CTA) que redireciona para a página de login -->
             <button class="botao" onclick="window.location.href='login.html'">Agende um horário</button>
         </section>
 
+        <!-- Seção com imagem ilustrativa de cachorro e gato -->
         <section class="imagem fade-in-delay-2">
-            <img src="../images/DogCat.png" alt="Imagem de um cachorro e um gato">
+            <img src="../images/DogCat.png" alt="Imagem de um cachorro e um gato" draggable="false"> <!-- Imagem decorativa -->
         </section>
+
     </main>
 
+    <!-- Rodapé da página com informações de direitos autorais e créditos -->
     <footer class="fade-in-delay-3">
-        <p>&copy; 2025 Petshop do Gusta. Todos os direitos reservados.</p>
-        <p>Desenvolvido por <a href="https://www.linkedin.com/in/gustavo-roberto-0aa488288/" target="_blank">Gustavo
-                R.</a></p>
+        <p>&copy; 2025 Petshop do Gusta. Desenvolvido por 
+            <a href="https://www.linkedin.com/in/gustavo-roberto-0aa488288/" target="_blank">Gustavo R</a>.
+            <!-- Link externo para o LinkedIn do desenvolvedor, abre em nova aba -->
+        </p>
     </footer>
 
+    <!-- Script JavaScript para acionar animações após o carregamento da página -->
     <script>
         window.addEventListener('DOMContentLoaded', () => {
+            // Adiciona a classe 'animate' para disparar animações nas seções marcadas com fade-in
             document.querySelectorAll('.fade-in, .fade-in-delay, .fade-in-delay-2, .fade-in-delay-3').forEach(el => {
                 el.classList.add('animate');
             });

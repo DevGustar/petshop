@@ -1,22 +1,36 @@
+// Aguarda o carregamento total do DOM
 document.addEventListener('DOMContentLoaded', () => {
+    // Recupera o token de autenticação do localStorage
     const token = localStorage.getItem('token');
 
+    // Se não houver token, redireciona para a tela de login
     if (!token) {
         window.location.href = 'login.html';
         return;
     }
 
+    // Referência ao formulário de agendamento
     const agendamentoForm = document.getElementById('agendamentoForm');
+
+    // Container onde os cards de agendamentos serão inseridos
     const container = document.getElementById('agendamentosContainer');
+
+    // Campo de imagem do formulário
     const imagemInput = agendamentoForm.querySelector('input[name="imagem"]');
+
+    // Imagem de preview que aparece após selecionar arquivo
     const preview = document.getElementById('previewImagem');
 
+    // Variável para controlar se está no modo edição ou não
     let modoEdicao = false;
+
+    // ID do agendamento que está sendo editado (se aplicável)
     let idEmEdicao = null;
 
+    // Carrega agendamentos já existentes do usuário
     listarAgendamentos();
 
-    // Preview da imagem
+    // Exibe o preview da imagem quando um novo arquivo é selecionado
     imagemInput.addEventListener('change', () => {
         const file = imagemInput.files[0];
         if (file) {
@@ -31,47 +45,48 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Enviar ou atualizar agendamento
+    // Envio do formulário de agendamento (criação ou atualização)
     agendamentoForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
+        // Cria um objeto FormData para enviar arquivos junto com os dados
         const formData = new FormData(agendamentoForm);
 
-        // Obter a data e o horário do formulário
-        const data = formData.get('data'); // Formato esperado: yyyy-mm-dd
-        const horario = formData.get('horario'); // Formato esperado: hh:mm
+        // Validações de data e horário
+        const data = formData.get('data');
+        const horario = formData.get('horario');
 
-        // Validar se a data é um dia útil
-        const [ano, mes, dia] = data.split('-').map(Number); // Dividir a data manualmente
-        const dataObj = new Date(ano, mes - 1, dia); // Criar a data sem interferência de fuso horário
-        const diaSemana = dataObj.getDay(); // 0 = Domingo, 6 = Sábado
+        // Transforma a data em objeto Date para validação do dia da semana
+        const [ano, mes, dia] = data.split('-').map(Number);
+        const dataObj = new Date(ano, mes - 1, dia);
+        const diaSemana = dataObj.getDay();
         if (diaSemana === 0 || diaSemana === 6) {
             alert('Agendamentos só podem ser feitos de segunda a sexta.');
             return;
         }
 
-        // Validar se o horário está entre 8h e 18h
+        // Validação de faixa de horário (08h às 18h)
         const [horas, minutos] = horario.split(':').map(Number);
         if (horas < 8 || horas > 18 || (horas === 18 && minutos > 0)) {
             alert('O horário deve estar entre 8h e 18h.');
             return;
         }
 
-        // Validar se a data e o horário não estão no passado
+        // Valida se a data/hora do agendamento está no futuro
         const agora = new Date();
-        const dataHoraAgendamento = new Date(ano, mes - 1, dia, horas, minutos, 0, 0); // Criar a data e hora sem fuso horário
-
+        const dataHoraAgendamento = new Date(ano, mes - 1, dia, horas, minutos, 0, 0);
         if (dataHoraAgendamento < agora) {
             alert('Não é possível agendar para uma data ou horário que já passou.');
             return;
         }
 
+        // Define a URL e método dependendo se está editando ou criando
         const url = modoEdicao
             ? `http://localhost:3000/api/agendamentos/${idEmEdicao}`
             : 'http://localhost:3000/api/agendamentos';
-
         const method = modoEdicao ? 'PUT' : 'POST';
 
+        // Envia os dados para o backend
         try {
             const response = await fetch(url, {
                 method,
@@ -100,6 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Função que lista os agendamentos do usuário
     async function listarAgendamentos() {
         container.innerHTML = '<p>Carregando...</p>';
         try {
@@ -108,6 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     Authorization: `Bearer ${token}`
                 }
             });
+
             const agendamentos = await response.json();
 
             if (Array.isArray(agendamentos)) {
@@ -117,12 +134,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     container.innerHTML = '<p>Nenhum agendamento encontrado.</p>';
                 }
 
+                // Para cada agendamento, cria um "card" com as informações
                 agendamentos.forEach((item) => {
-                    // Formatar data
                     const dataObj = new Date(item.data);
                     const dataFormatada = `${String(dataObj.getDate()).padStart(2, '0')}/${String(dataObj.getMonth() + 1).padStart(2, '0')}/${dataObj.getFullYear()}`;
-
-                    // Usar o horário diretamente do campo item.horario
                     const [horas, minutos] = item.horario.split(':');
                     const horarioFormatado = minutos === '00' ? `${horas}h` : `${horas}h${minutos}`;
 
@@ -148,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Função global para editar
+    // Torna a função de editar acessível globalmente (via botão)
     window.editarAgendamento = async (id) => {
         try {
             const response = await fetch(`http://localhost:3000/api/agendamentos/${id}`, {
@@ -170,13 +185,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 modoEdicao = true;
                 idEmEdicao = id;
-
-                // Atualizar o texto do botão principal
                 agendamentoForm.querySelector('button').textContent = 'Salvar Alterações';
-
-                // Exibir o botão "Cancelar Alteração"
                 document.getElementById('cancelarEdicao').style.display = 'inline-block';
-
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             } else {
                 alert(data.message || 'Erro ao carregar agendamento.');
@@ -187,25 +197,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // Botão que cancela o modo edição e reseta o formulário
     const cancelarEdicaoBtn = document.getElementById('cancelarEdicao');
-
     cancelarEdicaoBtn.addEventListener('click', () => {
-        // Resetar o formulário
         agendamentoForm.reset();
         preview.style.display = 'none';
-
-        // Reverter o estado de edição
         modoEdicao = false;
         idEmEdicao = null;
-
-        // Atualizar o texto do botão principal
         agendamentoForm.querySelector('button').textContent = 'Agendar';
-
-        // Ocultar o botão "Cancelar Alteração"
         cancelarEdicaoBtn.style.display = 'none';
     });
 
-    // Função global para excluir
+    // Torna a função de exclusão acessível globalmente (via botão)
     window.excluirAgendamento = async (id) => {
         if (!confirm('Deseja realmente excluir este agendamento?')) return;
 
@@ -232,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 });
 
-// Logout simples
+// Função de logout: remove o token do localStorage e redireciona para o login
 function logout() {
     localStorage.removeItem('token');
     window.location.href = 'login.html';

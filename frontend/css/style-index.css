@@ -1,151 +1,193 @@
+/* Define altura total para html */
 html,
+/* Define altura total para body */
 body {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    background: #F5E9E1;
-    color: #343737;
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    overflow-x: hidden;
+    height: 100%; /* Ocupa 100% da altura da tela */
+    width: 100%;  /* Ocupa 100% da largura da tela */
+    margin: 0; /* Remove margens padrão do navegador */
+    padding: 0; /* Remove padding padrão do navegador */
+    background: #F5E9E1; /* Define cor de fundo clara (tom bege rosado) */
+    color: #343737; /* Define cor do texto padrão (cinza escuro) */
+    font-family: 'Poppins', sans-serif; /* Fonte estilizada da Google Fonts */
+    display: flex; /* Layout flexível */
+    flex-direction: column; /* Direção dos filhos em coluna (de cima pra baixo) */
+    overflow-x: hidden; /* Remove rolagem horizontal (impede quebras horizontais) */
 }
 
+/* Container principal da landing page */
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 2rem 1rem;
-    width: 100%;
-    max-width: 1400px;
-    box-sizing: border-box;
+    display: flex; /* Layout flexível */
+    flex-direction: column; /* Organiza verticalmente os elementos */
+    align-items: center; /* Centraliza horizontalmente os filhos */
+    justify-content: center; /* Centraliza verticalmente */
+    text-align: center; /* Alinha o texto ao centro */
+    padding: 2rem 1rem; /* Espaçamento interno (2rem acima/baixo, 1rem lados) */
+    width: 100%; /* Ocupa 100% da largura da tela */
+    max-width: 1400px; /* Limita a largura máxima */
+    height: 100vh; /* Ocupa 100% da altura da viewport */
+    box-sizing: border-box; /* Inclui padding e borda dentro do width/height */
 }
 
+/* Seção textual da página (título, parágrafo e botão) */
 .conteudo {
-    max-width: 600px;
-    padding: 0 1rem;
+    max-width: 600px; /* Limita a largura do conteúdo textual */
+    padding: 0 1rem; /* Espaço lateral interno */
 }
 
+/* Título principal da landing */
 h1 {
-    font-size: 2.2rem;
-    margin-bottom: 1rem;
-    line-height: 1.3;
+    font-size: 2.2rem; /* Tamanho de fonte grande */
+    margin-bottom: 1rem; /* Espaço abaixo do título */
+    line-height: 1.3; /* Espaçamento entre linhas */
 }
 
+/* Parágrafos da seção de texto */
 p {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
+    font-size: 1.1rem; /* Tamanho de fonte do parágrafo */
+    margin-bottom: 2rem; /* Espaçamento inferior */
 }
 
+/* Botão de chamada para ação (CTA) */
 .botao {
-    background: #107BE3;
-    padding: 1rem 2rem;
-    color: white;
-    font-weight: bold;
-    border-radius: 10px;
-    border: none;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    background: #107BE3; /* Cor azul do botão */
+    padding: 1rem 2rem; /* Espaçamento interno (vertical/horizontal) */
+    color: white; /* Cor do texto */
+    font-weight: bold; /* Texto em negrito */
+    border-radius: 10px; /* Arredondamento dos cantos */
+    border: none; /* Remove borda */
+    font-size: 1rem; /* Tamanho da fonte do botão */
+    cursor: pointer; /* Cursor de "mãozinha" ao passar o mouse */
+    transition: background-color 0.3s ease; /* Suaviza a transição da cor */
 }
 
+/* Efeito hover no botão */
 .botao:hover {
-    background-color: #0c66c2;
+    background-color: #0c66c2; /* Azul mais escuro ao passar o mouse */
 }
 
+/* Imagem principal da landing page */
 .imagem img {
-    max-width: 100%;
-    max-height: 500px;
-    height: auto;
-    object-fit: contain;
-    margin-top: 2rem;
-    border-radius: 1rem;
+    max-width: 100%; /* Garante que a imagem não ultrapasse o container */
+    max-height: 50vh; /* Limita a altura da imagem a metade da viewport */
+    height: auto; /* Ajusta proporcionalmente */
+    object-fit: contain; /* Mantém proporção da imagem sem corte */
+    margin-top: 2rem; /* Espaço superior */
+    border-radius: 1rem; /* Bordas arredondadas */
 }
 
+/* Rodapé da página */
 footer {
-    margin-top: 2rem;
+    margin-top: auto; /* Empurra o rodapé para o fim da página */
+    padding: 1rem; /* Espaço interno do rodapé */
+    text-align: center; /* Centraliza o texto */
 }
 
+/* Texto do rodapé */
 footer p {
-    text-align: center;
-    font-size: 0.9rem;
-    margin: 0;
+    font-size: 0.9rem; /* Tamanho menor para o rodapé */
+    margin: 0; /* Remove margens padrão */
 }
 
+/* Links do rodapé */
 footer a {
-    color: #107BE3;
-    text-decoration: none;
+    color: #107BE3; /* Cor azul do link */
+    text-decoration: none; /* Remove sublinhado */
 }
 
-/* Animações */
+/* Animação inicial dos elementos */
 .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeIn 1s ease-out forwards;
+    opacity: 0; /* Começa invisível */
+    transform: translateY(20px); /* Desce 20px para animação */
+    animation: fadeIn 1s ease-out forwards; /* Aplica animação */
 }
 
+/* Delay de 0.3s na animação */
 .fade-in-delay {
     opacity: 0;
     transform: translateY(20px);
     animation: fadeIn 1s ease-out 0.3s forwards;
 }
 
+/* Delay de 0.6s na animação */
 .fade-in-delay-2 {
     opacity: 0;
     transform: translateY(20px);
     animation: fadeIn 1s ease-out 0.6s forwards;
 }
 
+/* Delay de 0.9s na animação */
 .fade-in-delay-3 {
     opacity: 0;
     transform: translateY(20px);
     animation: fadeIn 1s ease-out 0.9s forwards;
 }
 
+/* Definição da keyframe "fadeIn" */
 @keyframes fadeIn {
     to {
-        opacity: 1;
-        transform: translateY(0);
+        opacity: 1; /* Torna visível */
+        transform: translateY(0); /* Volta à posição original */
     }
 }
 
-/* Tela grande (lado a lado) */
+/* Media query para telas maiores (largura >= 900px) */
 @media (min-width: 900px) {
     .container {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        text-align: left;
-        padding: 4rem;
+        flex-direction: row; /* Coloca imagem e texto lado a lado */
+        justify-content: space-between; /* Espaça bem os elementos */
+        align-items: center; /* Alinha ao centro verticalmente */
+        text-align: left; /* Alinha texto à esquerda */
+        padding: 4rem; /* Aumenta o espaçamento */
+        height: auto; /* Deixa a altura fluida */
     }
 
     .conteudo {
-        flex: 1;
-        max-width: 600px;
-        padding-right: 2rem;
+        flex: 1; /* Ocupa metade da largura */
+        max-width: 600px; /* Garante legibilidade */
+        padding-right: 2rem; /* Espaço entre texto e imagem */
     }
 
     .imagem {
-        flex: 1;
-        display: flex;
-        justify-content: center;
+        flex: 1; /* Ocupa metade da largura */
+        display: flex; /* Flex para centralizar imagem */
+        justify-content: center; /* Centraliza horizontalmente */
     }
 
     .imagem img {
-        max-height: 600px;
-        margin-top: 0;
+        max-height: 600px; /* Aumenta altura máxima em desktop */
+        margin-top: 0; /* Remove margem superior */
     }
 
     h1 {
-        font-size: 3.5rem;
+        font-size: 3.5rem; /* Aumenta o título */
     }
 
     p {
-        font-size: 1.3rem;
+        font-size: 1.3rem; /* Aumenta o parágrafo */
+    }
+}
+
+/* Media query para telas com pouca altura (ex: celular deitado) */
+@media (max-height: 600px) {
+    .container {
+        justify-content: flex-start; /* Alinha ao topo */
+        padding: 1rem; /* Reduz o padding */
+    }
+
+    .imagem img {
+        max-height: 30vh; /* Reduz imagem em altura */
+    }
+
+    h1 {
+        font-size: 1.8rem; /* Título menor */
+    }
+
+    p {
+        font-size: 1rem; /* Parágrafo menor */
+    }
+
+    .botao {
+        font-size: 0.9rem; /* Botão menor */
+        padding: 0.8rem 1.5rem; /* Padding reduzido */
     }
 }

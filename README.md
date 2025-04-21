@@ -20,27 +20,30 @@ A FECAP é referência nacional em excelência educacional, com mais de um sécu
 
 ## 📌 Descrição do Projeto
 
-O **Sistema de Agendamento de Banhos em Pet Shop** é uma aplicação web completa com frontend em HTML/CSS e backend em Node.js e Express, focada em facilitar o processo de agendamento de banhos para animais de estimação.
+O **Sistema de Agendamento de Banhos em Pet Shop** é uma aplicação web moderna com frontend em HTML/CSS/JS e backend em Node.js + Express. O sistema permite que tutores agendem facilmente horários para seus pets, com uma interface atraente, responsiva e segura.
 
-Funcionalidades principais:
+### Funcionalidades principais:
 - Cadastro e login de usuários com senhas criptografadas (bcrypt)
-- Autenticação via JWT
+- Login com Google via OAuth 2.0
+- Autenticação protegida por JWT
 - CRUD completo de agendamentos (criar, listar, editar, excluir)
-- Upload de imagens dos pets com preview no frontend
-- Interface responsiva com animações suaves
-- Middleware de proteção para rotas privadas
+- Upload de imagens dos pets com preview
+- Interface 100% responsiva com animações suaves
+- Middleware de proteção de rotas privadas
 - Banco de dados MySQL estruturado
 
-Funcionalidades extras:
-- Preview de imagem antes do envio
-- Edição de agendamento com imagem atualizada
-- Sessão protegida por JWT (com redirect automático)
+### Extras:
+- Redirecionamento automático para login ou agendamentos conforme estado da sessão
+- Validação de horários disponíveis
+- Interface de login e cadastro moderna
 
 ## 📁 Estrutura de Pastas
 
-```
+```bash
 petshop/
 ├── backend/
+│   ├── auth/
+│   │   └── google.js
 │   ├── controllers/
 │   │   └── agendamentoController.js
 │   ├── middlewares/
@@ -49,13 +52,17 @@ petshop/
 │   ├── models/
 │   ├── routes/
 │   │   ├── agendamentos.js
-│   │   └── auth.js
+│   │   ├── auth.js
+│   │   └── google.js
 │   ├── uploads/
 │   ├── .env
+│   ├── .env.example
 │   ├── app.js
 │   ├── database.js
+│   ├── server.js
 │   ├── package.json
-│   └── server.js
+│   └── README.md
+│
 ├── frontend/
 │   ├── css/
 │   │   ├── style.css
@@ -67,17 +74,22 @@ petshop/
 │   ├── cadastro.html
 │   ├── index.html
 │   └── login.html
+│
+├── images/
+│   └── (imagens e logotipo do sistema)
+│
 ├── banco_petshop.sql
+├── .gitignore
 └── README.md
 ```
 
 ## ⚙️ Instalação & Execução
 
-### 🔗 Versão Web
+### 🔗 Acesso Web
 
-Basta abrir `frontend/index.html` em qualquer navegador.
+Abra o arquivo `frontend/index.html` no navegador.
 
-### 🐘 Backend (Node.js)
+### 🐘 Backend
 
 ```bash
 git clone https://github.com/DevGustar/petshop
@@ -88,28 +100,34 @@ node server.js
 
 ### Banco de Dados
 
-1. Execute o script `banco_petshop.sql` no seu MySQL Workbench
-2. Crie um arquivo `.env` com as informações:
+1. Execute o script `banco_petshop.sql` no MySQL
+2. Crie um arquivo `.env` com o seguinte conteúdo:
 
 ```env
 DB_HOST=localhost
 DB_USER=root
+DB_PORT=3306
 DB_PASSWORD=
 DB_NAME=petshop
-JWT_SECRET=sua_chave_secreta
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+GOOGLE_CALLBACK_URL=
+FRONTEND_URL=http://127.0.0.1:5500/frontend/login.html
+JWT_SECRET=
+JWT_EXPIRATION=1h
+JWT_REFRESH_EXPIRATION=7d
 ```
 
-> Certifique-se de que seu banco MySQL esteja rodando
+## 🧪 Tecnologias Utilizadas
 
-## 🧪 Ferramentas Utilizadas
-
-- [Node.js](https://nodejs.org/) + Express
-- [MySQL](https://www.mysql.com/)
-- [JWT](https://jwt.io/) para autenticação
-- [Multer](https://www.npmjs.com/package/multer) para upload de imagens
-- [Bcrypt](https://www.npmjs.com/package/bcrypt) para criptografar senhas
-- [Postman](https://www.postman.com/) para testes de API
-- [HTML5/CSS3/JS](https://developer.mozilla.org/)
+- Node.js + Express
+- MySQL
+- JWT (autenticação)
+- Bcrypt (criptografia)
+- Multer (upload de arquivos)
+- HTML5, CSS3, JavaScript
+- OAuth 2.0 com Google
+- Postman (testes de API)
 
 ## 📃 Licença
 
@@ -117,8 +135,8 @@ Este projeto está licenciado sob a [MIT License](https://opensource.org/license
 
 ## 📚 Referências
 
-1. [Autenticação com Node.js e MongoDB com JWT - Login e Registro com Node.js](https://youtu.be/qEBoZ8lJR3k?si=vz2f9aIXsP35-Bwv)
-2. [Saiba mais sobre Express](https://expressjs.com)
-3. [JWT (JSON Web Token - Autenticação e Segurança)](https://youtu.be/Gyq-yeot8qM?si=NMZOaLZOsNVxCSfg)
-4. [Fundação Escola de Comércio Álvares Penteado](https://www.fecap.br)
-5. [Para mais informações sobre qualquer linguagem](https://www.w3schools.com/)
+1. [Express.js](https://expressjs.com)
+2. [JWT - Autenticação com segurança](https://jwt.io/)
+3. [Google OAuth2](https://youtu.be/D8DMj2lQMwo?si=jXSB5B6DrXqYEztW)
+4. [HTML5/CSS/JS - W3Schools](https://www.w3schools.com)
+5. [Fundação Escola de Comércio Álvares Penteado](https://www.fecap.br)

@@ -1,6 +1,6 @@
 -- Criação do banco de dados
-CREATE DATABASE petshop;
-USE petshop;
+CREATE DATABASE banco_petshop;
+USE banco_petshop;
 
 -- Tabela de usuários
 CREATE TABLE usuarios (
@@ -16,14 +16,10 @@ CREATE TABLE agendamentos (
   usuario_id INT NOT NULL,
   nome_pet VARCHAR(100) NOT NULL,
   raca VARCHAR(100),
-  data DATE NOT NULL UNIQUE,
-  horario TIME NOT NULL UNIQUE,
+  data DATE NOT NULL,
+  horario TIME NOT NULL,
   observacoes TEXT,
   imagem VARCHAR(255) NOT NULL,
   criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
-
-
-SHOW DATABASES;
-DROP TABLE agendamentos;

@@ -1,62 +1,68 @@
-/* Reset básico */
+/* Remove margens e paddings padrão de todos os elementos e usa border-box para facilitar cálculo de tamanhos */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Estilização do corpo da página */
 body {
-    font-family: 'Poppins', sans-serif;
-    background: #F5E9E1;
-    color: #333;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif; /* Fonte principal */
+    background: #F5E9E1; /* Cor de fundo clara/bege */
+    color: #333; /* Cor do texto */
+    min-height: 100vh; /* Garante que o body ocupe toda a altura da tela */
+    display: flex; /* Flexbox no body */
+    flex-direction: column; /* Elementos filhos em coluna */
+    align-items: center; /* Alinha filhos ao centro horizontal */
+    justify-content: center; /* Alinha filhos ao centro vertical */
+    padding: 20px; /* Espaço interno */
+    overflow-x: hidden; /* Impede rolagem horizontal */
 }
 
+/* Logo do petshop fixa no canto superior esquerdo */
 .logo {
-    position: fixed;
-    height: 80px;
-    top: 20px;
-    left: 20px;
-    z-index: 100;
+    position: fixed; /* Fixa na tela mesmo ao rolar */
+    height: 80px; /* Altura da logo */
+    top: 20px; /* Distância do topo */
+    left: 20px; /* Distância da esquerda */
+    z-index: 100; /* Garante que fique sobreposta */
 }
 
+/* Container central que agrupa o conteúdo da página */
 .container {
-    background: #ffffff;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
-    width: 100%;
-    animation: fadeIn 0.8s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 100px;
+    background: #ffffff; /* Fundo branco */
+    padding: 40px; /* Espaço interno */
+    border-radius: 20px; /* Bordas arredondadas */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    max-width: 500px; /* Largura máxima */
+    width: 100%; /* Largura total */
+    animation: fadeIn 0.8s ease-in-out; /* Animação de entrada */
+    display: flex; /* Flex para layout interno */
+    flex-direction: column; /* Elementos em coluna */
+    align-items: center; /* Centraliza conteúdo horizontalmente */
+    gap: 1rem; /* Espaço entre os elementos */
+    margin-top: 100px; /* Espaço superior (para não colar no topo) */
 }
 
+/* Títulos em geral */
 h1,
 h2,
 h3 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #2c3e50;
-    font-weight: 600;
+    text-align: center; /* Centraliza texto */
+    margin-bottom: 20px; /* Espaço abaixo do título */
+    color: #2c3e50; /* Cor escura elegante */
+    font-weight: 600; /* Peso da fonte */
 }
 
+/* Estilo geral dos formulários */
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    width: 100%;
+    display: flex; /* Flex layout */
+    flex-direction: column; /* Coluna por padrão */
+    gap: 14px; /* Espaçamento entre os campos */
+    width: 100%; /* Ocupa toda a largura do container */
 }
 
+/* Campos de entrada (inputs e textarea) */
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -64,131 +70,152 @@ input[type="date"],
 input[type="time"],
 textarea,
 input[type="file"] {
-    padding: 14px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    font-size: 1rem;
-    transition: border-color 0.3s;
-    width: 100%;
+    padding: 14px; /* Espaçamento interno */
+    border: 1px solid #ccc; /* Borda cinza clara */
+    border-radius: 10px; /* Bordas arredondadas */
+    font-size: 1rem; /* Tamanho da fonte */
+    transition: border-color 0.3s; /* Animação da borda ao focar */
+    width: 100%; /* Ocupa a largura total */
 }
 
+/* Estilo ao focar nos campos */
 input:focus,
 textarea:focus {
-    border-color: #3498db;
-    outline: none;
+    border-color: #3498db; /* Borda azul ao focar */
+    outline: none; /* Remove contorno padrão */
 }
 
+/* Botão de logout */
 .logout {
-    position: fixed;
-    top: 10px;
-    right: 20px;
+    position: fixed; /* Fixa no topo */
+    top: 10px; /* Distância do topo */
+    right: 20px; /* Distância da direita */
 }
 
+/* Botão de cancelar edição */
 #cancelarEdicao {
-    background: orange;
-    width: 100%;
+    background: orange; /* Cor laranja */
+    width: 100%; /* Ocupa largura total */
 }
 
+/* Botões padrão */
 button {
-    padding: 14px;
-    border: none;
-    background: #107BE3;
-    color: #fff;
-    font-weight: bold;
-    border-radius: 10px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
+    padding: 14px; /* Espaçamento interno */
+    border: none; /* Sem borda */
+    background: #107BE3; /* Azul vibrante */
+    color: #fff; /* Texto branco */
+    font-weight: bold; /* Texto em negrito */
+    border-radius: 10px; /* Bordas arredondadas */
+    font-size: 1rem; /* Tamanho da fonte */
+    cursor: pointer; /* Muda cursor ao passar por cima */
+    transition: background 0.3s, transform 0.2s; /* Transições suaves */
 }
 
+/* Efeito hover nos botões padrão */
 button:hover {
-    background: #0c66c2;
+    background: #0c66c2; /* Azul mais escuro */
 }
 
+/* Botão de login via Google */
 .google-btn {
-    background-color: white;
-    border: 1px solid #ccc;
-    color: #444;
-    padding: 12px 18px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.3s ease;
-    font-size: 0.95rem;
+    background-color: white; /* Fundo branco */
+    border: 1px solid #ccc; /* Borda cinza */
+    color: #444; /* Cor do texto */
+    padding: 12px 18px; /* Espaçamento interno */
+    border-radius: 10px; /* Bordas arredondadas */
+    cursor: pointer; /* Mãozinha */
+    font-weight: 500; /* Peso médio */
+    display: inline-flex; /* Flexbox em linha */
+    align-items: center; /* Alinha ícone ao centro vertical */
+    justify-content: center; /* Centraliza horizontalmente */
+    transition: background 0.3s ease; /* Transição suave */
+    font-size: 0.95rem; /* Tamanho do texto */
 }
 
+/* Efeito hover no botão do Google */
 .google-btn:hover {
-    background-color: #f1f1f1;
+    background-color: #f1f1f1; /* Fundo cinza claro */
 }
 
+/* Parágrafos comuns */
 p {
-    text-align: center;
-    font-size: 0.95rem;
+    text-align: center; /* Centraliza texto */
+    font-size: 0.95rem; /* Tamanho de fonte padrão */
 }
 
+/* Links */
 a {
-    color: #107BE3;
-    text-decoration: none;
+    color: #107BE3; /* Azul */
+    text-decoration: none; /* Remove sublinhado */
 }
 
-a:hover {
-    text-decoration: underline;
-}
-
+/* Container onde os cards de agendamentos são renderizados */
 #agendamentosContainer {
-    margin-top: 20px;
-    display: grid;
-    gap: 16px;
-    width: 100%;
+    margin-top: 20px; /* Espaçamento superior */
+    display: grid; /* Layout em grade */
+    gap: 16px; /* Espaço entre os cards */
+    width: 100%; /* Ocupa toda a largura */
 }
 
+/* Card de um agendamento */
 .agendamento {
-    background: #ecf0f1;
-    padding: 16px;
-    border-radius: 14px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    animation: slideUp 0.5s ease;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    background: #ecf0f1; /* Cinza claro */
+    padding: 16px; /* Espaçamento interno */
+    border-radius: 14px; /* Bordas arredondadas */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra sutil */
+    animation: slideUp 0.5s ease; /* Animação de entrada */
+    display: flex; /* Layout flexível */
+    flex-direction: column; /* Elementos em coluna */
+    gap: 0.5rem; /* Espaço entre elementos */
 }
 
+/* Imagem dentro do card */
 .agendamento img {
-    width: 100%;
-    max-height: 200px;
-    object-fit: cover;
-    border-radius: 12px;
+    width: 100%; /* Ocupa toda a largura disponível */
+    max-height: 200px; /* Altura máxima */
+    object-fit: cover; /* Cobre mantendo proporção */
+    border-radius: 12px; /* Bordas arredondadas */
 }
 
+/* Botão de excluir agendamento */
 .agendamento button {
-    background: #e74c3c;
+    background: #e74c3c; /* Vermelho */
 }
 
+/* Efeito hover do botão de exclusão */
 .agendamento button:hover {
-    background: #c0392b;
+    background: #c0392b; /* Vermelho escuro */
 }
 
+/* Botão de edição */
 .agendamento .editButton {
-    background: #3498db;
+    background: #3498db; /* Azul */
 }
 
+/* Hover do botão de edição */
 .agendamento .editButton:hover {
-    background: #246ea0;
+    background: #246ea0; /* Azul escuro */
 }
 
+/* Estilo responsivo para telas pequenas */
 @media (max-width: 600px) {
     .container {
-        padding: 24px;
+        padding: 24px; /* Reduz o padding no mobile */
     }
 
     .agendamento img {
-        max-height: 150px;
+        max-height: 150px; /* Imagens menores no mobile */
     }
 }
 
+/* Classe para animação de fade-in */
+.fade-in {
+    opacity: 0; /* Começa invisível */
+    transform: translateY(20px); /* Posição inicial deslocada */
+    animation: fadeIn 1s ease-out forwards; /* Executa animação */
+}
+
+/* Animação fadeIn */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -201,14 +228,15 @@ a:hover {
     }
 }
 
+/* Animação slideUp para cards de agendamento */
 @keyframes slideUp {
     from {
-        transform: translateY(30px);
-        opacity: 0;
+        transform: translateY(30px); /* Começa mais embaixo */
+        opacity: 0; /* Invisível no início */
     }
 
     to {
-        transform: translateY(0);
-        opacity: 1;
+        transform: translateY(0); /* Volta à posição normal */
+        opacity: 1; /* Torna-se visível */
     }
 }
